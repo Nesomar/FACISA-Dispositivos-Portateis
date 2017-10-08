@@ -17,6 +17,7 @@ export class UserSignup {
 
   public signupForm: FormGroup;
   public loading: Loading;
+
   constructor(
     public navCtrl: NavController, 
     public authProvider: AuthData,
@@ -33,12 +34,10 @@ export class UserSignup {
     }
 
     signupUser(){
-      console.log('opaaaa');
       if (!this.signupForm.valid){
         console.log(this.signupForm.value);
       } else {
-        this.authProvider.signupUser(this.signupForm.value.email, 
-            this.signupForm.value.password)
+        this.authProvider.signupUser(this.signupForm.value.email, this.signupForm.value.password)
         .then(() => {
           this.loading.dismiss().then( () => {
             this.navCtrl.push(Dashboard);

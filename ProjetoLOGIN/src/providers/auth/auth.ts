@@ -1,39 +1,28 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/firebase';
-
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthData {
-
-  constructor() {
-    
+  
+  constructor(private angularFireAuth : AngularFireAuth) {
   }
 
-  loginUser(email: string, password: string): firebase.Promise<any> {
-    return firebase.auth().signInWithEmailAndPassword(email, password);
-}
+  loginUser(email: string, password: string): any {
+    return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
+  }
 
-  signupUser(email: string, password: string): firebase.Promise<any> {
-    return firebase
-  .auth()
-  .createUserWithEmailAndPassword(email, password)
-    .then( newUser => {
-        firebase
-    .database()
-    .ref('/userProfile')
-    .child(newUser.uid)
-        .set({ email: email });
-  });
-}
+  signupUser(email: string, password: string): any {
+    return this.angularFireAuth.auth
+  .createUserWithEmailAndPassword(email, password);
+  }
 
-resetPassword(email: string): firebase.Promise<void> {
-  return firebase.auth().sendPasswordResetEmail(email);
-}
+  resetPassword(email: string): any {
+    return this.angularFireAuth.auth.sendPasswordResetEmail(email);
+  }
 
-logoutUser(): firebase.Promise<void> {
-  return firebase.auth().signOut();
-}
-
-
+  logoutUser(): any {
+    this.angularFireAuth.auth.signOut();
+  }
 
 }

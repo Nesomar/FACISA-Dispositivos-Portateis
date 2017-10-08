@@ -1,3 +1,4 @@
+import { AngularFireAuthModule  } from 'angularfire2/auth';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from "./app.component";
 import { UserLogin } from "../pages/user-login/user-login";
@@ -26,6 +27,7 @@ import { environment } from "../environments/environment";
     HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
