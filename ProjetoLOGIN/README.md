@@ -12,6 +12,8 @@ Take the name after `ionic2-starter-`, and that is the name of the template to b
 
 ```bash
 $ sudo npm install -g ionic cordova
+$ sudo npm install firebase angularfire2 --save
+$ sudo npm install --save firebase
 $ ionic start mySideMenu sidemenu
 ```
 

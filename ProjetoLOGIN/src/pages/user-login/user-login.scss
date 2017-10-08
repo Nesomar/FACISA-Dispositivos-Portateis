@@ -14,4 +14,9 @@
 
       .item{border:$border-color 1px solid !important; margin-bottom:10px;}
   }
+  page-login {
+    .invalid {
+      border-bottom: 1px solid #FF6153;
+    }
+  }
 }
